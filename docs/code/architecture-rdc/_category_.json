@@ -1,0 +1,8 @@
+{
+  "label": "Architecture étendue (RDC)",
+  "position": 2,
+  "link": {
+    "type": "generated-index",
+    "description": "Architecture technique de l'adaptation de Coach Digital à l'outil d'observation de classe de la RDC : modèle de données, déroulement de l'observation, synchronisation hors ligne et moteur de règles du PDP."
+  }
+}
