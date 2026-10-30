@@ -162,6 +162,8 @@ La cote proposée est calculée à partir des comportements cotés du sous-domai
 
 L'outil papier prévoit un tableau « Activité(s) observée(s) », qui peut contenir plusieurs lignes. Chaque ligne devient un enregistrement.
 
+Décision : dans cette version, une fiche d'observation porte sur **une seule activité**, comme elle ne comprend qu'une grille, une heure de début et de fin, un PDP et un jeu de signatures. L'application crée donc une seule ligne `session_activity` par séance. La table est conservée telle quelle afin de pouvoir autoriser plusieurs activités plus tard, si le besoin est confirmé, sans migration des données ni changement de la synchronisation.
+
 La colonne « Sous-domaine » de ce tableau désigne le sous-domaine du programme éducatif (ex. « Mathématiques », avec la discipline « Arithmétique »), et non un sous-domaine de la grille d'observation : elle est donc enregistrée en texte, sans lien avec `competence` (point à confirmer avec le SERNAFOR).
 
 | Colonne | Champ de l'outil papier |
@@ -174,7 +176,7 @@ La colonne « Sous-domaine » de ce tableau désigne le sous-domaine du programm
 | `p_i` | Colonne « P/I » |
 | `time` | Heure |
 | `essential_knowledge` | Savoirs essentiels ou sujet de la séquence didactique |
-| `display_order` | Ordre de la ligne dans le tableau |
+| `display_order` | Ordre de la ligne dans le tableau (toujours 1 dans cette version) |
 
 ### Observateur : `coach`
 
@@ -343,7 +345,7 @@ Les règles du PDP s'exécutent sur l'appareil : le projet de PDP peut être ét
 | Élément du modèle | Backlog |
 | --- | --- |
 | Grille, types de réponse, aide contextuelle | B04, B05, B06 |
-| Machine à états, en-tête, activités observées | B10, B11 |
+| Machine à états, en-tête, activité observée | B10, B11 |
 | Checklist documentaire | B12 |
 | Notes chronologiques et verrouillage de la cotation | B13, B14 |
 | Cotes des sous-domaines | B15 |
@@ -358,5 +360,6 @@ Les règles du PDP s'exécutent sur l'appareil : le projet de PDP peut être ét
 2. **Cote globale** des sous-domaines I et III.2 : absente de l'annexe B.
 3. **Colonne « P/I »** du tableau des activités observées : signification à préciser.
 4. **Liste figurant à droite de l'en-tête** (Intéressé, Établissement, IGE, IPP, Pool, Proved, Gestionnaire, A.T./Bourgm., S/Proved, Classement) : s'il s'agit de la liste de diffusion de la fiche, elle relève du rapport PDF et non de la saisie.
-5. **Colonne « Sous-domaine »** des activités observées : sous-domaine du programme éducatif (hypothèse retenue) ou sous-domaine de la grille.
+5. **Colonne « Sous-domaine »** de l'activité observée : sous-domaine du programme éducatif (hypothèse retenue) ou sous-domaine de la grille.
 6. **Bilan des objectifs du PDP précédent** : évolution possible, hors TDR, à décider.
+7. **« Segments » et « étapes 1 / 2 »** mentionnés par le manuel (repris du cadre TEACH) : avec une seule activité par fiche et une cotation globale, il s'agit d'une question de vocabulaire, sans effet sur l'application.
