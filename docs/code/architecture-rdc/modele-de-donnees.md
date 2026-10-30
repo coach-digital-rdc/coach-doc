@@ -303,24 +303,15 @@ L'application produit deux documents distincts pour une séance clôturée :
 
 Les deux documents sont produits sur l'appareil à partir des tables décrites ci-dessus ; ils ne sont pas stockés.
 
-### Modules réutilisés : cercles d'apprentissage et forum d'échanges pédagogiques
+### Cercles d'apprentissage
 
-Les TDR prévoient de réutiliser les deux modules complémentaires de Coach Digital. Leur fonctionnement est conservé :
+Les TDR prévoient de réutiliser les modules complémentaires de Coach Digital. Pour la RDC, seuls les **cercles d'apprentissage (TLC)** sont conservés : une séance collective animée par l'observateur avec un groupe d'enseignants, autour d'une unité de formation (langage positif, objectifs de la séquence, vérification de la compréhension). Le module « communauté de pratique », qui faisait doublon, n'est pas proposé dans l'application de la RDC.
 
-- **Cercles d'apprentissage (TLC)** : séance collective animée par l'observateur avec un groupe d'enseignants, autour d'une unité de formation (langage positif, objectifs de la séquence, vérification de la compréhension). Le contenu des unités est adapté au secondaire congolais (B22).
-- **Communauté de pratique**, renommée **« Forum d'échanges pédagogiques »** pour reprendre le vocabulaire du manuel : réunion de l'équipe enseignante autour des résultats des observations de l'établissement, animée par le chef d'établissement ou le conseiller pédagogique.
+Le contenu des trois unités est rédigé dans le code de l'application mobile, comme aujourd'hui, et adapté au secondaire congolais (B22). Sa gestion depuis l'administration n'est pas prévue ; elle serait utile si le SERNAFOR souhaitait rédiger lui-même de nouvelles unités (évolution possible).
 
-Ces modules utilisent deux tables existantes de l'application mobile : `TLC_evaluation` (unité, animateur, appréciation de la séance) et `COP` (constats, points positifs, axes d'amélioration, prochaines étapes, photos, par établissement).
+**Recommandation d'unité.** Au début d'un cercle, l'application classe les unités selon les résultats de l'établissement : pour chaque unité, elle compte les observations de l'établissement dans lesquelles le comportement de l'unité (2.1.2, 3.1.5 ou 3.1.7) a été coté Faible, et place en tête, comme « recommandée », l'unité dont le comportement est le plus souvent faible. Elle signale aussi le comportement le plus faible de l'établissement lorsqu'aucune unité ne le couvre. Le calcul est fait sur l'appareil, sans connexion, à partir des tables `session` et `answer` des séances de l'établissement déjà synchronisées ; il ne demande aucune table nouvelle.
 
-Constat de l'audit : contrairement à ce qu'indique l'analyse des écarts (annexe A), ces deux tables n'existent que sur l'appareil. Le serveur n'a pas d'entité correspondante et la synchronisation ne les transmet pas : les séances de cercles et les comptes rendus de forum ne sont donc visibles ni dans l'administration ni dans le tableau de bord. Pour qu'ils le soient, il faut ajouter les deux entités côté serveur et les inclure dans la synchronisation (point à décider).
-
-### Suivi d'une observation à l'autre
-
-Conformément aux TDR, les progrès de l'enseignant se mesurent à l'observation suivante, avec les fonctions existantes de Coach Digital : les courbes d'évolution par enseignant et par compétence, et le tableau de bord filtrable par zone et par période. Aucune table n'est ajoutée pour cela.
-
-Lors de la préparation d'une nouvelle séance, l'application affiche en lecture seule le PDP validé de la dernière observation du même enseignant (objectifs, indicateurs, échéances), lu dans les tables `pdp` et `pdp_objective` existantes.
-
-Un bilan formel des objectifs (statut atteint, partiellement atteint ou non atteint, et report des objectifs non atteints) n'est pas prévu par les TDR ; il est présenté au SERNAFOR comme une évolution possible.
+Les séances de cercles sont enregistrées dans la table existante `TLC_evaluation` (unité, animateur, appréciation de la séance). Constat de l'audit : contrairement à ce qu'indique l'analyse des écarts (annexe A), cette table n'existe que sur l'appareil ; le serveur n'a pas d'entité correspondante et la synchronisation ne la transmet pas. Pour que les séances de cercles apparaissent dans l'administration et le tableau de bord, il faut ajouter l'entité côté serveur et l'inclure dans la synchronisation (point à décider).
 
 ## Déroulement de l'observation
 
@@ -388,6 +379,7 @@ Les règles du PDP s'exécutent sur l'appareil : le projet de PDP peut être ét
 6. **Bilan des objectifs du PDP précédent** : évolution possible, hors TDR, à décider.
 7. **« Segments » et « étapes 1 / 2 »** mentionnés par le manuel (repris du cadre TEACH) : avec une seule activité par fiche et une cotation globale, il s'agit d'une question de vocabulaire, sans effet sur l'application.
 8. **PDP et coaching** : le PDP tient lieu de rapport de coaching (hypothèse retenue). Des séances d'accompagnement entre deux observations, sans nouvelle cotation, ne sont pas prévues.
-9. **Animation des cercles d'apprentissage et du forum** : chef d'établissement, conseiller pédagogique ou inspecteur.
+9. **Animation des cercles d'apprentissage** : chef d'établissement, conseiller pédagogique ou inspecteur.
 10. **Fonctions des observateurs** : le manuel cite aussi le Directeur des études et le Conseiller d'enseignement, absents des quatre fonctions prévues par les TDR.
-11. **Synchronisation des cercles et du forum** : à ajouter si leurs données doivent remonter dans l'administration et le tableau de bord.
+11. **Synchronisation des cercles** : à ajouter si leurs séances doivent remonter dans l'administration et le tableau de bord.
+12. **Communauté de pratique** : non proposée dans l'application de la RDC (doublon avec les cercles) ; à signaler au SERNAFOR, le module étant cité dans les TDR.
