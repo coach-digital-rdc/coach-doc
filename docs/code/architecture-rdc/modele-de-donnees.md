@@ -311,7 +311,25 @@ Le contenu des trois unités est rédigé dans le code de l'application mobile, 
 
 **Recommandation d'unité.** Au début d'un cercle, l'application classe les unités selon les résultats de l'établissement : pour chaque unité, elle compte les observations de l'établissement dans lesquelles le comportement de l'unité (2.1.2, 3.1.5 ou 3.1.7) a été coté Faible, et place en tête, comme « recommandée », l'unité dont le comportement est le plus souvent faible. Elle signale aussi le comportement le plus faible de l'établissement lorsqu'aucune unité ne le couvre. Le calcul est fait sur l'appareil, sans connexion, à partir des tables `session` et `answer` des séances de l'établissement déjà synchronisées ; il ne demande aucune table nouvelle.
 
-Les séances de cercles sont enregistrées dans la table existante `TLC_evaluation` (unité, animateur, appréciation de la séance). Constat de l'audit : contrairement à ce qu'indique l'analyse des écarts (annexe A), cette table n'existe que sur l'appareil ; le serveur n'a pas d'entité correspondante et la synchronisation ne la transmet pas. Pour que les séances de cercles apparaissent dans l'administration et le tableau de bord, il faut ajouter l'entité côté serveur et l'inclure dans la synchronisation (point à décider).
+Les séances de cercles sont enregistrées dans la table existante `TLC_evaluation` (unité, animateur, appréciation de la séance de 1 à 5, date d'enregistrement). Constat de l'audit : contrairement à ce qu'indique l'analyse des écarts (annexe A), cette table n'existe que sur l'appareil ; le serveur n'a pas d'entité correspondante et la synchronisation ne la transmet pas. Pour que les séances de cercles apparaissent dans l'administration et le tableau de bord, il faut ajouter l'entité côté serveur et l'inclure dans la synchronisation (point à décider).
+
+**Liste de présence.** La table existante n'indique ni l'établissement ni les participants : on ne peut donc rien savoir des cercles d'une école donnée. Au début de l'unité, l'animateur coche les enseignants de l'établissement qui participent ; l'écran de fin rappelle leur nombre. Un enseignant absent de la liste peut être ajouté pendant la séance : il est alors créé dans `teacher` pour l'établissement, comme depuis l'écran « Nouvel enseignant ».
+
+| Table | Champ | Description |
+| --- | --- | --- |
+| `TLC_evaluation` | `school_id` (ajouté) | Établissement où le cercle a lieu |
+| `TLC_evaluation` | `held_at` (ajouté) | Date de la séance (`created_at` est la date d'enregistrement) |
+| `tlc_participant` (nouvelle) | `tlc_evaluation_id`, `teacher_id` | Enseignants présents (couple unique) ; le nombre de participants s'en déduit |
+
+```mermaid
+erDiagram
+    school ||--o{ TLC_evaluation : accueille
+    coach ||--o{ TLC_evaluation : anime
+    TLC_evaluation ||--|{ tlc_participant : "a pour présents"
+    teacher ||--o{ tlc_participant : participe
+```
+
+Ces données permettent aussi d'afficher, sur la fiche d'un enseignant, les cercles qu'il a suivis (par exemple l'unité 3 lorsque son PDP vise le comportement 3.1.7), et de comparer plus tard la progression des enseignants qui ont suivi une unité ; ces deux usages ne sont pas montrés dans les maquettes.
 
 ## Déroulement de l'observation
 
@@ -383,3 +401,4 @@ Les règles du PDP s'exécutent sur l'appareil : le projet de PDP peut être ét
 10. **Fonctions des observateurs** : le manuel cite aussi le Directeur des études et le Conseiller d'enseignement, absents des quatre fonctions prévues par les TDR.
 11. **Synchronisation des cercles** : à ajouter si leurs séances doivent remonter dans l'administration et le tableau de bord.
 12. **Communauté de pratique** : non proposée dans l'application de la RDC (doublon avec les cercles) ; à signaler au SERNAFOR, le module étant cité dans les TDR.
+13. **Liste de présence des cercles** : ajout non prévu explicitement par les TDR (établissement, date et enseignants présents), proposé pour suivre les cercles par établissement ; il n'est utile au niveau de l'administration qu'avec la synchronisation des cercles (point 11).
