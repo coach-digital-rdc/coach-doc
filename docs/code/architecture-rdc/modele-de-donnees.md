@@ -162,10 +162,12 @@ La cote proposée est calculée à partir des comportements cotés du sous-domai
 
 L'outil papier prévoit un tableau « Activité(s) observée(s) », qui peut contenir plusieurs lignes. Chaque ligne devient un enregistrement.
 
+La colonne « Sous-domaine » de ce tableau désigne le sous-domaine du programme éducatif (ex. « Mathématiques », avec la discipline « Arithmétique »), et non un sous-domaine de la grille d'observation : elle est donc enregistrée en texte, sans lien avec `competence` (point à confirmer avec le SERNAFOR).
+
 | Colonne | Champ de l'outil papier |
 | --- | --- |
 | `session_id` | Séance |
-| `competence_id` | Sous-domaine |
+| `sub_domain` | Sous-domaine du programme (ex. « Mathématiques ») |
 | `discipline` | Discipline |
 | `sheet_code` | N° de fiche ou code matrice |
 | `class_name` | Classe |
@@ -202,8 +204,10 @@ Le périmètre d'accès découle de la fonction : le chef d'établissement et le
 | `checklist_item_id` (ajoutée) | Document concerné (une réponse par document et par séance) |
 | `answer` (ajoutée) | `true` = Oui, `false` = Non, vide = non renseigné |
 | `proposal` (ajoutée) | Proposition de l'observateur en cas de réponse Non |
-| `filled_in_phase` (ajoutée) | Étape à laquelle la réponse a été saisie : `PREPARATION` ou `EVALUATION` |
+| `filled_in_phase` (ajoutée) | Étape à laquelle la réponse a été saisie : `PREPARATION` ou `EVALUATION`. Elle est déduite de l'étape de la séance ; l'observateur n'a pas à la choisir |
 | `value` (existante) | Inutilisée, conservée pour compatibilité |
+
+La checklist est remplie en préparation, comme le prévoient les TDR. Ce qui n'a pas pu être vérifié avant la leçon peut être complété en évaluation ; pendant l'observation, la checklist est en lecture seule. Elle ne bloque jamais le déroulement : l'observation peut démarrer avec une checklist incomplète, et la séance peut être clôturée avec des documents non vérifiés, après un simple rappel.
 
 La checklist n'entre dans aucun calcul de cote ni de diagnostic.
 
@@ -221,6 +225,13 @@ Une ligne par note prise pendant l'observation. Les notes sont créées et enreg
 
 Une ligne par signataire prévu par l'outil papier : enseignant, chef d'établissement, observateur.
 
+Règles de signature :
+
+- **l'observateur** signe toujours ; c'est lui qui utilise l'appareil ;
+- **l'enseignant** ne peut pas être absent, puisque le PDP est validé avec lui ; il peut en revanche refuser de signer, en indiquant le motif ;
+- **le chef d'établissement** est le seul signataire qui peut être absent, en indiquant le motif ;
+- **lorsque l'observateur est le chef d'établissement** (`observer_function` = `SCHOOL_HEAD`), il ne signe qu'une fois : aucune ligne `SCHOOL_HEAD` n'est créée et le rapport PDF reprend sa signature dans les deux cases.
+
 | Colonne | Rôle |
 | --- | --- |
 | `session_id` | Séance |
@@ -228,7 +239,8 @@ Une ligne par signataire prévu par l'outil papier : enseignant, chef d'établis
 | `signer_name` | Nom du signataire |
 | `image_id` | Image de la signature, enregistrée dans la table `image` existante, déjà synchronisée |
 | `signed_at` | Date et heure de la signature |
-| `absence_reason` | Motif, si le signataire est absent ; `image_id` reste alors vide |
+| `refusal_reason` | Motif du refus de signer (enseignant uniquement) ; `image_id` reste alors vide |
+| `absence_reason` | Motif de l'absence (chef d'établissement uniquement) ; `image_id` reste alors vide |
 
 ### Plan de Développement Professionnel : `pdp_rule_set`, `pdp_library_item`, `pdp`, `pdp_objective` (nouvelles)
 
@@ -241,7 +253,7 @@ Le moteur de règles est une configuration et non du code : le SERNAFOR peut la 
 | `version` | Numéro croissant |
 | `status` | `DRAFT` (brouillon, modifiable), `PUBLISHED` (en vigueur, diffusée aux appareils) ou `ARCHIVED` (remplacée) ; une seule version publiée à la fois |
 | `diagnostic_config` | Règles de diagnostic, en JSON : correspondance entre une réponse et une catégorie (Élevé ou Oui → point fort ; Moyen → axe à consolider ; Faible ou Non → axe prioritaire) et seuil de cote, par sous-domaine, en dessous duquel tous ses comportements sont traités en priorité |
-| `max_objectives` | Nombre maximal d'objectifs dans un PDP |
+| `max_objectives` | Nombre maximal d'objectifs dans un PDP ; 3 dans la première version proposée, pour concentrer l'effort de l'enseignant sur quelques priorités entre deux visites |
 | `published_at`, `published_by` | Date de publication et administrateur qui l'a faite |
 
 **`pdp_library_item`** : la bibliothèque d'objectifs, une ligne par comportement et par version des règles. Une première bibliothèque est proposée à partir des descriptions du manuel, pour validation par le SERNAFOR.
@@ -278,6 +290,14 @@ Le moteur de règles est une configuration et non du code : le SERNAFOR peut la 
 
 La table `feedback` existante (retour de coaching sur une pratique) est conservée pour les autres pays ; le flux de la RDC utilise le PDP.
 
+### Suivi d'une observation à l'autre
+
+Conformément aux TDR, les progrès de l'enseignant se mesurent à l'observation suivante, avec les fonctions existantes de Coach Digital : les courbes d'évolution par enseignant et par compétence, et le tableau de bord filtrable par zone et par période. Aucune table n'est ajoutée pour cela.
+
+Lors de la préparation d'une nouvelle séance, l'application affiche en lecture seule le PDP validé de la dernière observation du même enseignant (objectifs, indicateurs, échéances), lu dans les tables `pdp` et `pdp_objective` existantes.
+
+Un bilan formel des objectifs (statut atteint, partiellement atteint ou non atteint, et report des objectifs non atteints) n'est pas prévu par les TDR ; il est présenté au SERNAFOR comme une évolution possible.
+
 ## Déroulement de l'observation
 
 `session_status` porte la machine à états du déroulement en trois temps décrit par le manuel.
@@ -293,9 +313,9 @@ stateDiagram-v2
 
 | Étape | Ce qui est modifiable | Condition pour passer à l'étape suivante |
 | --- | --- | --- |
-| `PREPARATION` | En-tête, activités observées, checklist documentaire | Champs obligatoires de l'en-tête renseignés |
-| `OBSERVATION` | Notes chronologiques uniquement | Au moins une note enregistrée |
-| `EVALUATION` | Cotation des comportements, cotes des sous-domaines, checklist, conseils, heures, PDP, signatures ; les notes sont en lecture seule | Tous les comportements cotés (ou N/A), toutes les cotes de sous-domaine saisies, PDP validé, trois signatures ou motifs d'absence |
+| `PREPARATION` | En-tête, activités observées, checklist documentaire | Champs obligatoires de l'en-tête renseignés (la checklist peut rester incomplète) |
+| `OBSERVATION` | Notes chronologiques uniquement ; la checklist est en lecture seule | Au moins une note enregistrée |
+| `EVALUATION` | Cotation des comportements, cotes des sous-domaines, checklist, conseils, heures, PDP, signatures ; les notes sont en lecture seule | Tous les comportements cotés (ou N/A), toutes les cotes de sous-domaine saisies, PDP validé, signature de l'observateur, signature ou refus motivé de l'enseignant, signature ou absence motivée du chef d'établissement. Les documents non vérifiés de la checklist font l'objet d'un rappel, sans bloquer |
 | `COMPLETED` | Rien (séance close) | — |
 
 Aucun retour en arrière n'est possible depuis l'application. Les séances existantes, dont `session_status` est vide, sont considérées comme closes.
@@ -338,3 +358,5 @@ Les règles du PDP s'exécutent sur l'appareil : le projet de PDP peut être ét
 2. **Cote globale** des sous-domaines I et III.2 : absente de l'annexe B.
 3. **Colonne « P/I »** du tableau des activités observées : signification à préciser.
 4. **Liste figurant à droite de l'en-tête** (Intéressé, Établissement, IGE, IPP, Pool, Proved, Gestionnaire, A.T./Bourgm., S/Proved, Classement) : s'il s'agit de la liste de diffusion de la fiche, elle relève du rapport PDF et non de la saisie.
+5. **Colonne « Sous-domaine »** des activités observées : sous-domaine du programme éducatif (hypothèse retenue) ou sous-domaine de la grille.
+6. **Bilan des objectifs du PDP précédent** : évolution possible, hors TDR, à décider.
