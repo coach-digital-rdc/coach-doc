@@ -251,7 +251,7 @@ Règles de signature :
 | `session_id` | Séance |
 | `signer_role` | `TEACHER` (enseignant), `SCHOOL_HEAD` (chef d'établissement) ou `OBSERVER` (observateur) |
 | `signer_name` | Nom du signataire |
-| `image_id` | Image de la signature, enregistrée dans la table `image` existante, déjà synchronisée |
+| `image_id` | Image de la signature, enregistrée dans la table `image` existante, déjà synchronisée. Le tracé est conservé en SVG (`data:image/svg+xml`), sans bibliothèque supplémentaire ; il est saisi dans une fenêtre de dessin pour que le défilement de l'écran ne gêne pas le tracé |
 | `signed_at` | Date et heure de la signature |
 | `refusal_reason` | Motif du refus de signer (enseignant uniquement) ; `image_id` reste alors vide |
 | `absence_reason` | Motif de l'absence (chef d'établissement uniquement) ; `image_id` reste alors vide |
@@ -266,11 +266,11 @@ Le moteur de règles est une configuration et non du code : le SERNAFOR peut la 
 | --- | --- |
 | `version` | Numéro croissant |
 | `status` | `DRAFT` (brouillon, modifiable), `PUBLISHED` (en vigueur, diffusée aux appareils) ou `ARCHIVED` (remplacée) ; une seule version publiée à la fois |
-| `diagnostic_config` | Règles de diagnostic, en JSON : correspondance entre une réponse et une catégorie (Élevé ou Oui → point fort ; Moyen → axe à consolider ; Faible ou Non → axe prioritaire) et seuil de cote, par sous-domaine, en dessous duquel tous ses comportements sont traités en priorité |
-| `max_objectives` | Nombre maximal d'objectifs dans un PDP ; 3 dans la première version proposée, pour concentrer l'effort de l'enseignant sur quelques priorités entre deux visites |
+| `diagnostic_config` | Règles de diagnostic, en JSON : correspondance entre une réponse et une catégorie (Élevé ou Oui → point fort ; Moyen → axe à consolider ; Faible ou Non → axe prioritaire) et seuil de cote, par sous-domaine, en dessous duquel tous ses comportements sont traités en priorité. Version 1 : `{"strength": ["HIGH", "YES"], "consolidate": ["MEDIUM"], "priority": ["LOW", "NO"], "priority_threshold": 2, "due_in_days": 42}`, soit une cote de sous-domaine de 2/5 ou moins et une échéance à six semaines |
+| `max_objectives` | Nombre maximal d'objectifs dans un PDP ; 3 dans la version 1, pour concentrer l'effort de l'enseignant sur quelques priorités entre deux visites |
 | `published_at`, `published_by` | Date de publication et administrateur qui l'a faite |
 
-**`pdp_library_item`** : la bibliothèque d'objectifs, une ligne par comportement et par version des règles. Une première bibliothèque est proposée à partir des descriptions du manuel, pour validation par le SERNAFOR.
+**`pdp_library_item`** : la bibliothèque d'objectifs, une ligne par comportement et par version des règles. La version 1 des règles et sa bibliothèque (30 objectifs, avec actions et indicateur) ont été validées par le SERNAFOR. Elles sont chargées avec la grille (`grille-rdc.json`) et embarquées dans l'application, qui génère le projet de PDP sans connexion ; leur modification depuis l'administration relève de B19 et B20.
 
 | Colonne | Rôle |
 | --- | --- |
@@ -299,7 +299,7 @@ Le moteur de règles est une configuration et non du code : le SERNAFOR peut la 
 | `category` | `PRIORITY` (axe prioritaire) ou `CONSOLIDATE` (axe à consolider) |
 | `rank` | Ordre de priorité dans le plan |
 | `objective`, `actions`, `indicator` | Contenu de l'objectif, repris de la bibliothèque puis ajustable |
-| `due_date` | Échéance |
+| `due_date` | Échéance, proposée à `due_in_days` jours de la séance et modifiable |
 | `origin` | `GENERATED` (repris tel quel), `EDITED` (modifié par l'observateur) ou `ADDED` (ajouté librement) |
 
 La table `feedback` existante (retour de coaching sur une pratique) est conservée pour les autres pays. En RDC, l'entretien qui suit l'observation aboutit au PDP : le PDP tient lieu de rapport de coaching, et le flux de coaching existant n'est pas utilisé.
