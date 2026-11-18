@@ -26,6 +26,12 @@ const config: Config = {
     ? { defaultLocale: "fr", locales: ["fr", "en"] }
     : { defaultLocale: "en", locales: ["en"] },
 
+  // Mermaid renders the architecture diagrams (entity-relationship, state machine).
+  markdown: {
+    mermaid: true,
+  },
+  themes: ["@docusaurus/theme-mermaid"],
+
   presets: [
     [
       "classic",
