@@ -201,11 +201,12 @@ Le périmètre d'accès découle de la fonction : le chef d'établissement et le
 
 ### Checklist documentaire : `checklist_item` (nouvelle) et `documentation` (étendue)
 
-`checklist_item` est le référentiel des 15 documents de l'annexe B. Il est géré dans l'administration et transmis aux appareils comme la grille.
+`checklist_item` est le référentiel des 15 documents de l'annexe B. Il est chargé avec la grille (`grille-rdc.json`, B04), puis géré dans l'administration, et transmis aux appareils comme la grille ; l'application en embarque une copie pour fonctionner avant la première synchronisation.
 
 | Colonne | Rôle |
 | --- | --- |
 | `code` | Numéro du document, de 1 à 15 |
+| `owner` | `TEACHER` (documents de l'enseignant.e, 1 à 9) ou `LEARNER` (documents de l'apprenant.e, 10 à 15) : les deux groupes de l'écran |
 | `statement` | Énoncé (ex. « L'enseignant.e tient quotidiennement son journal de classe avec clarté ») |
 | `document_name` | Nom du document (ex. « Journal de classe ») |
 | `display_order` | Ordre d'affichage |
