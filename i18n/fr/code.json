@@ -1,0 +1,7 @@
+{
+  "home.title": { "message": "Accueil" },
+  "home.description": { "message": "Documentation de Coach Digital RDC" },
+  "home.app": { "message": "Utiliser l'application" },
+  "home.admin": { "message": "Utiliser l'administration" },
+  "home.code": { "message": "Documentation développeur" }
+}

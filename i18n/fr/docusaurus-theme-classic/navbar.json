@@ -1,0 +1,22 @@
+{
+  "logo.alt": {
+    "message": "Logo de Coach Digital RDC",
+    "description": "The alt text of navbar logo"
+  },
+  "item.label.Using the app": {
+    "message": "Utiliser l'application",
+    "description": "Navbar item with label Using the app"
+  },
+  "item.label.Using the admin": {
+    "message": "Utiliser l'administration",
+    "description": "Navbar item with label Using the admin"
+  },
+  "item.label.Developer documentation": {
+    "message": "Documentation développeur",
+    "description": "Navbar item with label Developer documentation"
+  },
+  "item.label.Download the app": {
+    "message": "Télécharger l'application",
+    "description": "Navbar item with label Download the app"
+  }
+}

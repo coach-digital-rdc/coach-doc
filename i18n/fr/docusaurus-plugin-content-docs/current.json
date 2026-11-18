@@ -1,0 +1,94 @@
+{
+  "version.label": {
+    "message": "Version actuelle",
+    "description": "The label for version current"
+  },
+  "sidebar.appSidebar.category.Basic usage": {
+    "message": "Prise en main",
+    "description": "The label for category Basic usage in sidebar appSidebar"
+  },
+  "sidebar.appSidebar.category.Basic usage.link.generated-index.description": {
+    "message": "Tout ce qu'il faut savoir pour commencer à utiliser l'application.",
+    "description": "The generated-index page description for category Basic usage in sidebar appSidebar"
+  },
+  "sidebar.appSidebar.category.Teaching observation": {
+    "message": "Observation de classe",
+    "description": "The label for category Teaching observation in sidebar appSidebar"
+  },
+  "sidebar.appSidebar.category.Teaching observation.link.generated-index.description": {
+    "message": "Commencer et réaliser une observation de classe.",
+    "description": "The generated-index page description for category Teaching observation in sidebar appSidebar"
+  },
+  "sidebar.appSidebar.category.The coaching process": {
+    "message": "L'entretien",
+    "description": "The label for category The coaching process in sidebar appSidebar"
+  },
+  "sidebar.appSidebar.category.The coaching process.link.generated-index.description": {
+    "message": "Après l'observation de classe vient l'entretien avec l'enseignant.",
+    "description": "The generated-index page description for category The coaching process in sidebar appSidebar"
+  },
+  "sidebar.appSidebar.category.Teacher data": {
+    "message": "Données de l'enseignant",
+    "description": "The label for category Teacher data in sidebar appSidebar"
+  },
+  "sidebar.appSidebar.category.Teacher data.link.generated-index.description": {
+    "message": "Consulter les informations de l'enseignant pour l'aider à progresser.",
+    "description": "The generated-index page description for category Teacher data in sidebar appSidebar"
+  },
+  "sidebar.adminSidebar.category.Basic usage": {
+    "message": "Prise en main",
+    "description": "The label for category Basic usage in sidebar adminSidebar"
+  },
+  "sidebar.adminSidebar.category.Basic usage.link.generated-index.description": {
+    "message": "Tout ce qu'il faut savoir pour commencer à utiliser l'administration.",
+    "description": "The generated-index page description for category Basic usage in sidebar adminSidebar"
+  },
+  "sidebar.adminSidebar.category.Sidebar Menu": {
+    "message": "Les rubriques",
+    "description": "The label for category Sidebar Menu in sidebar adminSidebar"
+  },
+  "sidebar.adminSidebar.category.Sidebar Menu.link.generated-index.description": {
+    "message": "Les rubriques de la barre latérale et leur utilisation.",
+    "description": "The generated-index page description for category Sidebar Menu in sidebar adminSidebar"
+  },
+  "sidebar.codeSidebar.category.Deploying the Admin Dashboard": {
+    "message": "Installer l'administration",
+    "description": "The label for category Deploying the Admin Dashboard in sidebar codeSidebar"
+  },
+  "sidebar.codeSidebar.category.Deploying the Admin Dashboard.link.generated-index.description": {
+    "message": "Installer et déployer l'administration.",
+    "description": "The generated-index page description for category Deploying the Admin Dashboard in sidebar codeSidebar"
+  },
+  "sidebar.codeSidebar.category.Deploying the CoachAPP": {
+    "message": "Construire l'application mobile",
+    "description": "The label for category Deploying the CoachAPP in sidebar codeSidebar"
+  },
+  "sidebar.codeSidebar.category.Deploying the CoachAPP.link.generated-index.description": {
+    "message": "Configurer, construire et signer l'application mobile.",
+    "description": "The generated-index page description for category Deploying the CoachAPP in sidebar codeSidebar"
+  },
+  "sidebar.codeSidebar.category.Deploying the Back-end": {
+    "message": "Installer le serveur",
+    "description": "The label for category Deploying the Back-end in sidebar codeSidebar"
+  },
+  "sidebar.codeSidebar.category.Deploying the Back-end.link.generated-index.description": {
+    "message": "Installer le serveur (API) et charger les référentiels RDC.",
+    "description": "The generated-index page description for category Deploying the Back-end in sidebar codeSidebar"
+  },
+  "sidebar.codeSidebar.category.Deploying the CoachDocs": {
+    "message": "Installer la documentation",
+    "description": "The label for category Deploying the CoachDocs in sidebar codeSidebar"
+  },
+  "sidebar.codeSidebar.category.Deploying the CoachDocs.link.generated-index.description": {
+    "message": "Installer et modifier ce site de documentation.",
+    "description": "The generated-index page description for category Deploying the CoachDocs in sidebar codeSidebar"
+  },
+  "sidebar.codeSidebar.category.Deploying the DownloadApp": {
+    "message": "Page de téléchargement",
+    "description": "The label for category Deploying the DownloadApp in sidebar codeSidebar"
+  },
+  "sidebar.codeSidebar.category.Deploying the DownloadApp.link.generated-index.description": {
+    "message": "Mettre en place la page de téléchargement de l'application.",
+    "description": "The generated-index page description for category Deploying the DownloadApp in sidebar codeSidebar"
+  }
+}
