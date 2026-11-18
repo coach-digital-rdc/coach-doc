@@ -3,9 +3,13 @@ import type { Config } from "@docusaurus/types";
 import type * as Preset from "@docusaurus/preset-classic";
 require("dotenv").config();
 
+const isDRC = process.env.COUNTRY === "cd";
+
 const config: Config = {
-  title: `Coach Doc ${process.env.COUNTRY}`,
-  tagline: "Dinosaurs are cool",
+  title: isDRC ? "Coach Digital RDC" : `Coach Doc ${process.env.COUNTRY}`,
+  tagline: isDRC
+    ? "Documentation de l'outil d'observation de classe"
+    : "Coach Digital documentation",
   favicon: "img/favicon.ico",
 
   url: `https://coachdigital.org/`,
@@ -17,10 +21,10 @@ const config: Config = {
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
 
-  i18n: {
-    defaultLocale: "en",
-    locales: ["en"],
-  },
+  // DRC: French by default, English kept as a second language
+  i18n: isDRC
+    ? { defaultLocale: "fr", locales: ["fr", "en"] }
+    : { defaultLocale: "en", locales: ["en"] },
 
   presets: [
     [
@@ -28,10 +32,6 @@ const config: Config = {
       {
         docs: {
           sidebarPath: "./sidebars.ts",
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
         },
         blog: {
           showReadingTime: true,
@@ -79,6 +79,7 @@ const config: Config = {
           label: "Download the app",
           position: "right",
         },
+        ...(isDRC ? [{ type: "localeDropdown" as const, position: "right" as const }] : []),
       ],
     },
     footer: {
@@ -89,7 +90,9 @@ const config: Config = {
           items: [
             {
               label: "GitHub",
-              href: "https://github.com/WBG-Coach",
+              href: isDRC
+                ? "https://github.com/coach-digital-rdc"
+                : "https://github.com/WBG-Coach",
             },
             {
               label: "Download app",

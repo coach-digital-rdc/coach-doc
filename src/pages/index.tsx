@@ -4,11 +4,13 @@ import {
   HomeHeader,
   HomeLogoSL,
   HomeLogoNP,
+  HomeLogoCD,
   Laptop,
   SourceCode,
   Tablet,
 } from "@site/static/img/home";
 import BrowserOnly from "@docusaurus/BrowserOnly";
+import { translate } from "@docusaurus/Translate";
 
 function HomepageHeader() {
   return (
@@ -19,19 +21,22 @@ function HomepageHeader() {
 const Docs = [
   {
     img: Tablet,
-    label: "How to use Coach app",
+    label: translate({ id: "home.app", message: "How to use Coach app" }),
     path: "/docs/app/installation",
     winPath: "docs/app/installation",
   },
   {
     img: Laptop,
-    label: "How to use Admin pannel",
+    label: translate({ id: "home.admin", message: "How to use Admin pannel" }),
     path: "/docs/admin/accessing",
     winPath: "docs/admin/accessing",
   },
   {
     img: SourceCode,
-    label: "Developer documentation",
+    label: translate({
+      id: "home.code",
+      message: "Developer documentation",
+    }),
     path: "/docs/code/intro",
     winPath: "docs/code/intro",
   },
@@ -39,13 +44,23 @@ const Docs = [
 
 export default function Home(): JSX.Element {
   return (
-    <Layout title={`Home`} description="Coach APP SL Documentation">
+    <Layout
+      title={translate({ id: "home.title", message: "Home" })}
+      description={translate({
+        id: "home.description",
+        message: "Coach APP SL Documentation",
+      })}
+    >
       <HomepageHeader />
       <BrowserOnly>
         {() => (
           <img
             src={
-              window.location.href.includes("/np/") ? HomeLogoNP : HomeLogoSL
+              window.location.href.includes("/np/")
+                ? HomeLogoNP
+                : window.location.href.includes("/cd/")
+                ? HomeLogoCD
+                : HomeLogoSL
             }
             style={{
               objectFit: "cover",
