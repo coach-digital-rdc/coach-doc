@@ -156,7 +156,9 @@ La cote proposée est calculée à partir des comportements cotés du sous-domai
 | `signed_place` | Lieu (« Fait à ») ; la date est celle de `completed_at` |
 | `observation_started_at`, `observation_ended_at`, `completed_at` | Horodatage des changements d'étape |
 
-`session_status` est désormais renseigné (voir [Déroulement de l'observation](#déroulement-de-lobservation)). Les colonnes existantes `subject`, `objective`, `key_points`, `students_count` et `lesson_time` sont conservées ; la discipline et le sujet de la leçon sont portés par les activités observées.
+`session_status` est désormais renseigné (voir [Déroulement de l'observation](#déroulement-de-lobservation)). La colonne existante `subject` porte le champ « Discipline(s) » de l'en-tête ; `objective`, `key_points`, `students_count` et `lesson_time` sont conservées. La discipline et le sujet de la leçon observée sont portés par l'activité observée.
+
+À l'enregistrement de l'en-tête, l'application crée la séance à l'étape `OBSERVATION` (`observation_started_at`). Tant que les notes chronologiques (B13) ne sont pas en place, la cotation se fait directement après l'en-tête et la confirmation de la grille clôture la séance (`COMPLETED`, `observation_ended_at`, `completed_at`). Une séance commencée et non clôturée se reprend depuis la fiche de l'enseignant.
 
 ### Activités observées : `session_activity` (nouvelle)
 
@@ -177,6 +179,15 @@ La colonne « Sous-domaine » de ce tableau désigne le sous-domaine du programm
 | `time` | Heure |
 | `essential_knowledge` | Savoirs essentiels ou sujet de la séquence didactique |
 | `display_order` | Ordre de la ligne dans le tableau (toujours 1 dans cette version) |
+
+### Enseignant : `teacher`
+
+Le formulaire de l'enseignant des maquettes ajoute deux colonnes ; le matricule utilise la colonne existante `nin`.
+
+| Colonne ajoutée | Rôle |
+| --- | --- |
+| `sex` | Sexe : `F` ou `M` |
+| `weekly_load` | Charge hebdomadaire (heures), reprise par défaut dans `session.teacher_weekly_load` |
 
 ### Observateur : `coach`
 
