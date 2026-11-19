@@ -18,16 +18,9 @@ If you have already set up the local environment as described in the administrat
 2. **Installing Dependencies**: 
    After cloning, install the application's dependencies with Yarn. NodeJS version 18.18.2 is recommended. In the project root, execute `yarn install` to install all necessary libraries.
 
-3. **Configuring Environment Variables**: 
-   Following the installation of libraries, set up the environment variables. Create a `.env` file at the application's root with the following:
+3. Run the Application:
 
-```bash
-COUNTRY=
-```
-
-4. Run the Application:
-
-Save the `.env` file and run `yarn start`. Your application should now be active on port 3000.
+Run `yarn start`. The site opens on `http://localhost:3000/docs/`, in French by default (English is available in the language menu).
 
 ## Creaing New Documentation
 

@@ -20,8 +20,7 @@ Developed in ReactJs, the Coach administrative panel can be launched either loca
    Prior to launching, create a `.ENV` file at the application's root with these variables:
 
    ```bash
-   VITE_API_URL=[Example: http://localhost:3000/np/api]
-   VITE_COUNTRY=[Example: np]
+   VITE_API_URL=[Example: http://localhost:3000/api]
    VITE_MAX_REGION_LEVEL=[Example: 2]
 
 ```

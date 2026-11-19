@@ -1,19 +1,13 @@
 import { themes as prismThemes } from "prism-react-renderer";
 import type { Config } from "@docusaurus/types";
 import type * as Preset from "@docusaurus/preset-classic";
-require("dotenv").config();
-
-const isDRC = process.env.COUNTRY === "cd";
-
 const config: Config = {
-  title: isDRC ? "Coach Digital RDC" : `Coach Doc ${process.env.COUNTRY}`,
-  tagline: isDRC
-    ? "Documentation de l'outil d'observation de classe"
-    : "Coach Digital documentation",
+  title: "Coach Digital RDC",
+  tagline: "Documentation de l'outil d'observation de classe",
   favicon: "img/favicon.ico",
 
   url: `https://coachdigital.org/`,
-  baseUrl: `/${process.env.COUNTRY}/docs`,
+  baseUrl: "/docs/",
 
   organizationName: "facebook", // Usually your GitHub org/user name.
   projectName: "docusaurus", // Usually your repo name.
@@ -21,10 +15,8 @@ const config: Config = {
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
 
-  // DRC: French by default, English kept as a second language
-  i18n: isDRC
-    ? { defaultLocale: "fr", locales: ["fr", "en"] }
-    : { defaultLocale: "en", locales: ["en"] },
+  // French by default, English kept as a second language
+  i18n: { defaultLocale: "fr", locales: ["fr", "en"] },
 
   // Mermaid renders the architecture diagrams (entity-relationship, state machine).
   markdown: {
@@ -59,7 +51,7 @@ const config: Config = {
     navbar: {
       logo: {
         alt: "Coach App Logo",
-        src: `img/coach_logo_${process.env.COUNTRY}.png`,
+        src: "img/coach_logo_cd.png",
       },
       items: [
         {
@@ -81,11 +73,11 @@ const config: Config = {
           label: "Developer documentation",
         },
         {
-          href: `https://coachdigital.org/${process.env.COUNTRY}/download`,
+          href: "https://coachdigital.org/download",
           label: "Download the app",
           position: "right",
         },
-        ...(isDRC ? [{ type: "localeDropdown" as const, position: "right" as const }] : []),
+        { type: "localeDropdown", position: "right" },
       ],
     },
     footer: {
@@ -96,13 +88,11 @@ const config: Config = {
           items: [
             {
               label: "GitHub",
-              href: isDRC
-                ? "https://github.com/coach-digital-rdc"
-                : "https://github.com/WBG-Coach",
+              href: "https://github.com/coach-digital-rdc",
             },
             {
               label: "Download app",
-              href: `https://coachdigital.org/${process.env.COUNTRY}/download/`,
+              href: "https://coachdigital.org/download/",
             },
           ],
         },

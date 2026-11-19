@@ -21,7 +21,7 @@ Sources :
 
 ## Modèle existant
 
-Le schéma ci-dessous reprend les entités utilisées par le déroulement actuel de l'observation (Sierra Leone et Népal).
+Le schéma ci-dessous reprend les entités utilisées par le déroulement d'origine de l'observation, tel qu'hérité de WBG-Coach (Sierra Leone et Népal) ; la version RDC ne conserve que ce qui sert à la RDC.
 
 ```mermaid
 erDiagram

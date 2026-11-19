@@ -14,8 +14,6 @@ sidebar_position: 0
 
 ```bash
 APP_NAME=Coach Digital
-# Préfixe de toutes les routes : /cd/api
-COUNTRY=cd
 PORT=3000
 
 DB_HOST=localhost
@@ -60,7 +58,7 @@ insert into "public"."user" ("name", "email", "role") values ('Nom', 'votre@emai
 
 L'administrateur se connecte ensuite à l'administration avec un code reçu par e-mail.
 
-7. **Démarrer le serveur** : `npm run start:dev` en développement, `npm start` en production. L'API répond sur `http://<serveur>:3000/cd/api/` et sa documentation Swagger sur `/cd/api/docs`.
+7. **Démarrer le serveur** : `npm run start:dev` en développement, `npm start` en production. L'API répond sur `http://<serveur>:3000/api/` et sa documentation Swagger sur `/api/docs`.
 
 En développement, `npm run seed:fr` charge des données de démonstration fictives ; lancez-le avant `seed:territoires-rdc`.
 

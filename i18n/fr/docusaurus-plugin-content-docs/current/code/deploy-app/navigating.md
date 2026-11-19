@@ -11,16 +11,14 @@ L'application est distribuée en RDC sous forme de fichier APK. Les outils test�
 Dans le dépôt [coach-mobile](https://github.com/coach-digital-rdc/coach-mobile), créez le fichier `.env` à partir de `.env.example` :
 
 ```bash
-# Adresse de l'API, avec le préfixe du pays
-API_URL=https://votre-serveur/cd/api
-# Code pays : Android en tire aussi l'identifiant (com.coachdigital.rdc), le nom et l'icône de l'application
-COUNTRY=cd
+# Adresse de l'API
+API_URL=https://votre-serveur/api
 LOGIN_MODE=OTP
 # Grille RDC préchargée au premier démarrage, pour un usage hors ligne avant la première synchronisation
-SEEDS=SEED_CD_INSERT_COMPETENCIES,SEED_CD_INSERT_QUESTIONS
+SEEDS=SEED_CD_INSERT_COMPETENCIES,SEED_CD_INSERT_QUESTIONS,SEED_CD_INSERT_CHECKLIST,SEED_CD_INSERT_PDP_RULE_SET,SEED_CD_INSERT_PDP_LIBRARY
 ```
 
-Avec `COUNTRY=cd`, l'application est en français par défaut et embarque le manuel d'utilisation RDC.
+L'application (identifiant `com.coachdigital.rdc`, nom « Coach RDC ») est en français par défaut, l'anglais restant disponible, et embarque le manuel d'utilisation RDC.
 
 ## Développement
 
