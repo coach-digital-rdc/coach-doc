@@ -251,7 +251,7 @@ Règles de signature :
 | `session_id` | Séance |
 | `signer_role` | `TEACHER` (enseignant), `SCHOOL_HEAD` (chef d'établissement) ou `OBSERVER` (observateur) |
 | `signer_name` | Nom du signataire |
-| `image_id` | Image de la signature, enregistrée dans la table `image` existante, déjà synchronisée. Le tracé est conservé en SVG (`data:image/svg+xml`), sans bibliothèque supplémentaire ; il est saisi dans une fenêtre de dessin pour que le défilement de l'écran ne gêne pas le tracé |
+| `image_id` | Image de la signature, enregistrée dans la table `image` existante, déjà synchronisée. Le tracé est conservé en SVG (`data:image/svg+xml`), en bleu stylo (`#1A3FA8`), sans bibliothèque supplémentaire ; il est saisi dans une fenêtre de dessin pour que le défilement de l'écran ne gêne pas le tracé |
 | `signed_at` | Date et heure de la signature |
 | `refusal_reason` | Motif du refus de signer (enseignant uniquement) ; `image_id` reste alors vide |
 | `absence_reason` | Motif de l'absence (chef d'établissement uniquement) ; `image_id` reste alors vide |
@@ -316,7 +316,7 @@ L'application produit deux documents distincts pour une séance clôturée :
 Les deux documents sont produits sur l'appareil à partir des tables décrites ci-dessus ; ils ne sont pas stockés. Ils sont donc disponibles dès la clôture, même sans connexion, et toujours à jour des données de la séance.
 
 - **Génération** : un modèle HTML au format A4 (`src/helpers/report.helper.ts`) est converti en PDF par `react-native-html-to-pdf` (version 0.12, compatible avec l'ancienne architecture de React Native 0.72). Les signatures, enregistrées en SVG, sont reprises telles quelles.
-- **Consultation et partage** : l'écran « Documents PDF » affiche les deux documents (`react-native-pdf`) et les partage par le menu de partage d'Android (`react-native-share`) : e-mail, WhatsApp, Drive, Bluetooth, impression.
+- **Consultation, téléchargement et partage** : l'écran « Documents PDF » affiche les deux documents (`react-native-pdf`). « Télécharger » les enregistre dans Téléchargements › Coach Digital (`react-native-blob-util`, par le magasin de médias à partir d'Android 10, avec l'autorisation d'écriture avant) ; « Partager » ouvre le menu de partage d'Android (`react-native-share`) : e-mail, WhatsApp, Drive, Bluetooth, impression.
 - **Accès** : depuis l'écran « Séance clôturée », qui s'ouvre après la clôture et depuis la fiche de l'enseignant.e pour une séance déjà clôturée.
 - **Noms des fichiers** : `Fiche_observation_<NOM>_<AAAA-MM-JJ>.pdf` et `PDP_<NOM>_<AAAA-MM-JJ>.pdf`, d'après le nom de l'enseignant.e et la date de clôture.
 - Les documents suivent la langue de l'outil papier (français), quelle que soit la langue de l'application.
