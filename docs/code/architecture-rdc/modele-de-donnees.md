@@ -195,9 +195,9 @@ Le formulaire de l'enseignant des maquettes ajoute deux colonnes ; le matricule 
 | --- | --- |
 | `function` | `INSPECTOR` (inspecteur), `ADVISOR` (conseiller pédagogique), `SCHOOL_HEAD` (chef d'établissement) ou `PEER` (pair) |
 | `sex`, `duty_station`, `postal_box` | Champs de l'en-tête : sexe, poste d'attache, boîte postale. Le téléphone et l'adresse électronique existent déjà |
-| `region_id` | Zone d'intervention de l'inspecteur ou du conseiller |
+| `region_id` | Zone d'intervention de l'inspecteur ou du conseiller (à venir avec l'administration, B21) ; en attendant, `duty_station` porte le libellé de la zone saisi à la création du compte |
 
-Le périmètre d'accès découle de la fonction : le chef d'établissement et le pair accèdent aux établissements qui leur sont rattachés (`coach_school`, existant) ; l'inspecteur et le conseiller accèdent aux établissements de leur zone et des zones qui en dépendent (arborescence `region`, existante).
+Ces colonnes sont saisies sur l'écran « Compte observateur » de l'application, envoyées à la création du compte, renvoyées aux appareils à la synchronisation, et reprises dans l'en-tête de la fiche PDF. Le périmètre d'accès découle de la fonction : le chef d'établissement et le pair accèdent aux établissements qui leur sont rattachés (`coach_school`, existant) ; l'inspecteur et le conseiller accèdent aux établissements de leur zone et des zones qui en dépendent (arborescence `region`, existante).
 
 ### Checklist documentaire : `checklist_item` (nouvelle) et `documentation` (étendue)
 
@@ -329,25 +329,18 @@ Le contenu des trois unités est rédigé dans le code de l'application mobile, 
 
 **Recommandation d'unité.** Au début d'un cercle, l'application classe les unités selon les résultats de l'établissement : pour chaque unité, elle compte les observations de l'établissement dans lesquelles le comportement de l'unité (2.1.2, 3.1.5 ou 3.1.7) a été coté Faible, et place en tête, comme « recommandée », l'unité dont le comportement est le plus souvent faible. Elle signale aussi le comportement le plus faible de l'établissement lorsqu'aucune unité ne le couvre. Le calcul est fait sur l'appareil, sans connexion, à partir des tables `session` et `answer` des séances de l'établissement déjà synchronisées ; il ne demande aucune table nouvelle.
 
-Les séances de cercles sont enregistrées dans la table existante `tlc_evaluation` (unité, animateur, appréciation de la séance de 1 à 5, date d'enregistrement). Constat de l'audit : contrairement à ce qu'indique l'analyse des écarts (annexe A), cette table n'existe que sur l'appareil ; le serveur n'a pas d'entité correspondante et la synchronisation ne la transmet pas. Pour que les séances de cercles apparaissent dans l'administration et le tableau de bord, il faut ajouter l'entité côté serveur et l'inclure dans la synchronisation (point à décider).
+Les séances de cercles sont enregistrées dans la table `tlc_evaluation` (sur l'appareil, `TLC_evaluation`, SQLite ne distinguant pas les majuscules). Constat de l'audit : contrairement à ce qu'indiquait l'analyse des écarts (annexe A), cette table n'existait que sur l'appareil. Elle a été ajoutée côté serveur et elle est maintenant envoyée à la synchronisation.
 
-Dans l'application mobile, cette table a été créée sous le nom `TLC_evaluation`. Comme toutes les tables du modèle, elle est écrite ici en minuscules ; SQLite ne distinguant pas les majuscules dans les noms de tables, aucun renommage n'est nécessaire sur l'appareil, et l'entité créée côté serveur portera le nom `tlc_evaluation`.
-
-**Liste de présence.** La table existante n'indique ni l'établissement ni les participants : on ne peut donc rien savoir des cercles d'une école donnée. Au début de l'unité, l'animateur coche les enseignants de l'établissement qui participent ; l'écran de fin rappelle leur nombre. Un enseignant absent de la liste peut être ajouté pendant la séance : il est alors créé dans `teacher` pour l'établissement, comme depuis l'écran « Nouvel enseignant ».
+**Liste de présence.** Au début de l'unité, l'animateur coche les enseignants de l'établissement qui participent ; l'écran de fin rappelle leur nombre. Un enseignant absent de la liste peut être ajouté pendant la séance : son nom est ajouté aux participants de la séance, sans créer de fiche enseignant.
 
 | Table | Champ | Description |
 | --- | --- | --- |
+| `tlc_evaluation` | `unit_id`, `coach_id`, `evaluation` (existants) | Unité, animateur, appréciation de la participation de 1 à 5 |
 | `tlc_evaluation` | `school_id` (ajouté) | Établissement où le cercle a lieu |
-| `tlc_evaluation` | `held_at` (ajouté) | Date de la séance (`created_at` est la date d'enregistrement) |
-| `tlc_participant` (nouvelle) | `tlc_evaluation_id`, `teacher_id` | Enseignants présents (couple unique) ; le nombre de participants s'en déduit |
+| `tlc_evaluation` | `participants` (ajouté) | Noms des enseignants présents, en JSON |
+| `tlc_evaluation` | `participants_count` (ajouté) | Nombre de participants |
 
-```mermaid
-erDiagram
-    school ||--o{ tlc_evaluation : accueille
-    coach ||--o{ tlc_evaluation : anime
-    tlc_evaluation ||--|{ tlc_participant : "a pour présents"
-    teacher ||--o{ tlc_participant : participe
-```
+La date de la séance est celle de l'enregistrement (`created_at`). Les participants sont conservés par leur nom, ce qui couvre aussi les personnes ajoutées pendant la séance ; s'il faut un jour suivre la participation enseignant par enseignant dans le tableau de bord, une table `tlc_participant` (`tlc_evaluation_id`, `teacher_id`) pourra s'y ajouter.
 
 Ces données permettent aussi d'afficher, sur la fiche d'un enseignant, les cercles qu'il a suivis (par exemple l'unité 3 lorsque son PDP vise le comportement 3.1.7), et de comparer plus tard la progression des enseignants qui ont suivi une unité ; ces deux usages ne sont pas montrés dans les maquettes.
 
