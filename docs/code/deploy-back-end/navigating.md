@@ -21,8 +21,6 @@ After cloning the application, install its dependencies using Yarn. It is recomm
 Once the libraries are installed, the penultimate step is to define the environment variables. Create a .env file at the root of the application and set the following variables:
 
 ```bash
-COUNTRY=
-
 DB_HOST=
 DB_PORT=
 DB_USERNAME=
@@ -34,7 +32,12 @@ JWT_SECRET=
 
 SENDGRID_API_KEY=
 
-APP_NAME=कोच डिजिटल एनपी
+# Versions of the mobile application checked at start-up (GET /api/app/version)
+APP_LATEST_VERSION=
+APP_MIN_VERSION=
+APP_DOWNLOAD_URL=
+
+APP_NAME=Coach Digital
 ```
 
 5. Execute database migrations:

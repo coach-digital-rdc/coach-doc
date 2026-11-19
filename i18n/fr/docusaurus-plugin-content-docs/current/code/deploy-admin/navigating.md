@@ -13,21 +13,19 @@ L'administration est une application React (Vite). Elle se lance en local ou sur
 3. **Créer le fichier `.env`** :
 
    ```bash
-   VITE_API_URL=http://localhost:3000/cd/api
-   # Code pays, identique à COUNTRY sur le serveur
-   VITE_COUNTRY=cd
+   VITE_API_URL=http://localhost:3000/api
    # Dernier niveau de la hiérarchie : 0 province, 1 PROVED, 2 sous-PROVED
    VITE_MAX_REGION_LEVEL=2
    ```
 
-4. **Lancer en développement** : `npm run dev`, puis ouvrir `http://localhost:5173/cd/admin/`.
+4. **Lancer en développement** : `npm run dev`, puis ouvrir `http://localhost:5173/admin/`.
 
-Avec `VITE_COUNTRY=cd`, l'administration s'affiche en français, avec le logo et le titre de Coach Digital RDC.
+L'administration s'affiche en français par défaut (l'anglais reste disponible), avec le logo et le titre de Coach Digital RDC.
 
 ## Déploiement sur Ubuntu 22.04
 
 1. Construire l'application : `npm run build`. Les fichiers statiques sont produits dans `dist/`.
-2. Servir `dist/` avec le serveur web (Nginx ou Apache) sous le chemin `/cd/admin/`, en renvoyant toutes les routes vers `index.html`.
+2. Servir `dist/` avec le serveur web (Nginx ou Apache) sous le chemin `/admin/`, en renvoyant toutes les routes vers `index.html`.
 
 ## Dépannage
 

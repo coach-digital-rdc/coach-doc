@@ -14,8 +14,6 @@ sidebar_position: 0
 
 ```bash
 APP_NAME=Coach Digital
-# Préfixe de toutes les routes : /cd/api
-COUNTRY=cd
 PORT=3000
 
 DB_HOST=localhost
@@ -33,7 +31,15 @@ SENDGRID_API_KEY=
 # Expéditeur des courriels et adresse de l'administration citée dans le courriel de bienvenue
 MAIL_FROM=
 ADMIN_URL=
+
+# Versions de l'application mobile vérifiées au démarrage : l'application propose la mise à jour
+# quand une version plus récente est publiée et l'impose sous la version minimale
+APP_LATEST_VERSION=
+APP_MIN_VERSION=
+APP_DOWNLOAD_URL=
 ```
+
+Après la publication d'un nouvel APK, renseignez `APP_LATEST_VERSION` (par exemple `1.1`) et `APP_DOWNLOAD_URL` (lien de téléchargement de l'APK), puis redémarrez le serveur ; renseignez aussi `APP_MIN_VERSION` lorsque les versions antérieures ne doivent plus être utilisées. Les appareils lisent ces valeurs sur `GET /api/app/version`.
 
 4. **Créer les tables** :
 
@@ -60,7 +66,7 @@ insert into "public"."user" ("name", "email", "role") values ('Nom', 'votre@emai
 
 L'administrateur se connecte ensuite à l'administration avec un code reçu par e-mail.
 
-7. **Démarrer le serveur** : `npm run start:dev` en développement, `npm start` en production. L'API répond sur `http://<serveur>:3000/cd/api/` et sa documentation Swagger sur `/cd/api/docs`.
+7. **Démarrer le serveur** : `npm run start:dev` en développement, `npm start` en production. L'API répond sur `http://<serveur>:3000/api/` et sa documentation Swagger sur `/api/docs`.
 
 En développement, `npm run seed:fr` charge des données de démonstration fictives ; lancez-le avant `seed:territoires-rdc`.
 

@@ -1,10 +1,8 @@
-# Website
+# Coach Digital RDC – Documentation
 
-This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
+Documentation site (Docusaurus) of Coach Digital for the classroom observation tool of the DRC (PAAF / SERNAFOR), derived from [WBG-Coach](https://github.com/WBG-Coach). French by default, English as the second language. The multi-country version (Sierra Leone, Nepal) is kept under the git tag `avant-version-rdc`.
 
 ### Installation
-
-Copy `.env.example` to `.env` and set `COUNTRY` (e.g. `sl`). It sets the title, the logo and the base URL `/{COUNTRY}/docs`.
 
 ```
 $ npm install
@@ -16,7 +14,7 @@ $ npm install
 $ npm start
 ```
 
-The site opens on `http://localhost:3000/{COUNTRY}/docs`. Port 3000 is also used by the API: when the backend is running, start the documentation on another port with `npm start -- --port 3001`.
+The site opens on `http://localhost:3000/docs/`. Port 3000 is also used by the API: when the backend is running, start the documentation on another port with `npm start -- --port 3001`.
 
 ### Build
 

@@ -10,17 +10,11 @@ La documentation est un site [Docusaurus](https://docusaurus.io/). Le contenu es
 
 1. **Cloner le dépôt** [coach-doc](https://github.com/coach-digital-rdc/coach-doc).
 2. **Installer les dépendances** avec `npm install` (Node.js 18 ou plus récent).
-3. **Créer le fichier `.env`** :
+3. **Lancer en développement** : `npm start`, puis ouvrir `http://localhost:3000/docs/`.
 
-```bash
-COUNTRY=cd
-```
+Le site est en français par défaut, et l'anglais reste disponible dans le menu des langues. Pour travailler sur la version anglaise : `npm start -- --locale en`.
 
-4. **Lancer en développement** : `npm start`, puis ouvrir `http://localhost:3000/cd/docs`.
-
-Avec `COUNTRY=cd`, le site est en français par défaut, et l'anglais reste disponible dans le menu des langues. Pour travailler sur la version anglaise : `npm start -- --locale en`.
-
-5. **Construire le site** : `npm run build`, qui produit les fichiers statiques dans `build/`.
+4. **Construire le site** : `npm run build`, qui produit les fichiers statiques dans `build/`.
 
 ## Modifier la documentation
 
