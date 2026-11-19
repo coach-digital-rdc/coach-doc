@@ -149,7 +149,8 @@ La cote proposée est calculée à partir des comportements cotés du sous-domai
 | `level` | Niveau : PS, P ou S. La grille étant celle du secondaire, l'application enregistre toujours `S` et affiche « Secondaire » sans possibilité de modification ; le champ redeviendra un choix si une grille du primaire est ajoutée |
 | `school_year` | Année scolaire (ex. `2026-2027`) |
 | `teacher_weekly_load` | Charge hebdomadaire de l'enseignant (heures) |
-| `last_observation_date`, `last_observation_rating` | Dernière observation : date et appréciation |
+| `last_observation_date`, `last_observation_rating` | Dernière observation : date et appréciation, reprises de la dernière séance clôturée de l'enseignant à la création de la séance |
+| `suggested_appreciation`, `appreciation` (ajoutées) | Appréciation de cette observation : `VERY_GOOD` (très bien), `GOOD` (bien), `FAIRLY_GOOD` (assez bien), `INSUFFICIENT` (insuffisant) ou `WEAK` (faible). L'application la propose à partir de la moyenne `m` des cotes globales des sous-domaines (`m` ≥ 4,5 très bien, ≥ 3,5 bien, ≥ 2,5 assez bien, ≥ 1,5 insuffisant, sinon faible) ; l'observateur la garde ou la change sur l'écran « Conseils et horaires », et l'écart reste visible. Elle devient l'appréciation de la « dernière observation » de la séance suivante |
 | `observer_function` | Fonction de l'observateur au moment de la séance (copie de `coach.function`) |
 | `start_time`, `end_time` | Heures de début et de fin de la séquence didactique |
 | `advice` | Conseils |

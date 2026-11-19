@@ -32,6 +32,11 @@ JWT_SECRET=
 
 SENDGRID_API_KEY=
 
+# Versions of the mobile application checked at start-up (GET /api/app/version)
+APP_LATEST_VERSION=
+APP_MIN_VERSION=
+APP_DOWNLOAD_URL=
+
 APP_NAME=Coach Digital
 ```
 
