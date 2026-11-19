@@ -2,30 +2,44 @@
 sidebar_position: 0
 ---
 
-# La barre latérale
+# Se repérer
 
-La barre latérale, à gauche, donne accès à toutes les pages de l'administration.
+## Menu latéral
 
-## Votre compte
+Le menu de gauche regroupe les écrans par rubrique. Sur téléphone ou tablette, il s'ouvre avec le bouton ☰ en haut à gauche.
 
-En haut de la barre latérale, la carte de l'utilisateur donne accès aux paramètres et à la déconnexion.
+| Rubrique | Écrans |
+| --- | --- |
+| Pilotage | Tableau de bord |
+| Observations | Séances d'observation, Cercles d'apprentissage, Exports |
+| Acteurs | Observateurs, Enseignant.e.s, Établissements |
+| Référentiel | Grille d'observation, Checklist documentaire, Règles du PDP |
+| Administration | Utilisateurs et régions, Synchronisations (administrateurs) |
 
-### Paramètres
+## Barre du haut
 
-Les paramètres du compte permettent de modifier votre nom et votre adresse e-mail.
+- **Langue** : français ou anglais, retenue pour votre compte.
+- **Menu du compte** : accès aux paramètres et déconnexion.
+- Une fine barre bleue en haut de la fenêtre indique qu'un chargement est en cours.
 
-Les paramètres de la plateforme permettent, selon vos droits\*, de :
+## Listes
 
-- changer la langue de l'interface ;
-- gérer la hiérarchie territoriale : provinces, PROVED et sous-PROVED, à saisir une à une ou à importer d'un fichier CSV ;
-- gérer les autres comptes utilisateurs et leur périmètre.
+Toutes les listes fonctionnent de la même façon :
 
-\*_La gestion des utilisateurs est réservée aux administrateurs._
+- le champ **Rechercher** filtre la liste sur plusieurs mots, sans tenir compte des accents ;
+- un clic sur l'en-tête d'une colonne trie la liste, un second clic inverse l'ordre ;
+- le bas de la liste permet de choisir le nombre de lignes par page et de changer de page ;
+- les filtres **Province**, **PROVED** et **Sous-PROVED** limitent la liste à une zone ; les niveaux de votre propre région sont fixés.
 
-## Les rubriques
+## Confirmations et messages
 
-L'administration comporte trois rubriques :
+Les actions qui suppriment ou publient demandent une confirmation. Les messages de réussite s'affichent quelques secondes en haut à droite ; les erreurs s'affichent dans une fenêtre avec leur explication.
 
-- **Tableau de bord** : les résultats d'une zone sur une période choisie ;
-- **Grille** : les sous-domaines et comportements de la grille d'observation, et les séances d'observation ;
-- **Données** : les tableaux détaillés (établissements, observateurs, activité, séances, synchronisations), à filtrer et à télécharger.
+## Paramètres
+
+L'écran **Utilisateurs et régions** comporte quatre onglets :
+
+- **Général** : votre nom et votre adresse e-mail ;
+- **Utilisateurs** (administrateurs) : ajout, modification et suppression des comptes, avec leur rôle et leur région ;
+- **Provinces** (administrateurs) : la hiérarchie Province, PROVED, Sous-PROVED et son import ;
+- **Journal** (administrateurs) : les actions faites dans l'administration.

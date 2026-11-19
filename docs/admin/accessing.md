@@ -2,19 +2,29 @@
 sidebar_position: 0
 ---
 
-# About the Application
+# About the administration
 
-The Admin Panel serves as a vital tool for government officials and designated individuals in managing data and information within the Coach Digital app. It offers the following capabilities:
+The administration of Coach Digital DRC lets SERNAFOR, the General Inspectorate and the provincial teams follow the pedagogical support of the teachers. It is used to:
 
-- Viewing data from sessions conducted by Coaches with teachers.
-- Accessing performance data at local, regional, and national levels*.
-- Creating and editing Teaching Practices that Coaches use to assess teachers during the coaching process.
+- follow the activity of the observers and the results of the observations, by function and by area;
+- read each observation session and print its sheet and its PDP;
+- manage the reference shared by the devices: observation grid, document checklist and PDP rules;
+- manage the observers, the teachers, the schools, the users and the regions;
+- export the data to Excel.
 
-*Note: The availability of data previews for different regions is subject to user permissions.*
+Each user only sees the data of their region (province, PROVED or sub-PROVED) and of its sub-regions. A user without a region sees the whole country.
 
-## Getting Started
+## Roles
 
-To begin utilizing the Admin Panel, visit the [Admin Panel website](https://coachdigital.org/np/admin/) and sign in using your registered username and password.
+| Role | Can |
+| --- | --- |
+| Administrator | read everything, change the reference (grid, checklist, PDP rules), manage the schools, the users and the regions |
+| Analyst | read and export everything, without changing the reference |
 
-![Login page](/img/admin_getting_started/admin-login.png)
+## Logging in
 
+1. Open the address of the administration, for example `https://<server>/admin`.
+2. Enter your e-mail address and choose **Receive a login code**.
+3. Enter the 8-digit code received by e-mail and choose **Verify the code**.
+
+There is no password. To log out, open the menu of your account at the top right, choose **Log out** and confirm.

@@ -2,41 +2,44 @@
 sidebar_position: 0
 ---
 
-# Sidebar Navigation
+# Finding your way
 
-The sidebar in the Admin Panel is your gateway to navigating the application. It provides access to a variety of resources, including settings, dashboard, and data tables.
+## Side menu
 
-![Sidebar](/img/admin_getting_started/admin-sidebar.png)
+The menu on the left groups the screens by subject. On a phone or a tablet, it opens with the ☰ button at the top left.
 
-## User Resources
+| Section | Screens |
+| --- | --- |
+| Steering | Dashboard |
+| Observations | Observation sessions, Learning circles, Exports |
+| People | Observers, Teachers, Schools |
+| Reference | Observation grid, Document checklist, PDP rules |
+| Administration | Users and regions, Synchronisations (administrators) |
 
-Within the sidebar, you'll find a user information card. This card offers quick access to settings and the logout option.
+## Top bar
 
-![User resources](/img/admin_getting_started/user-card.png)
+- **Language**: French or English, kept for your account.
+- **Account menu**: settings and log out.
+- A thin blue bar at the top of the window shows that something is loading.
 
-### Settings
+## Lists
 
-The Settings section encompasses both account and system-related functionalities.
+Every list works the same way:
 
-Account-related options include:
+- the **Search** field filters the list on several words, ignoring accents;
+- a click on the header of a column sorts the list, a second click reverses the order;
+- the bottom of the list sets the number of rows per page and changes the page;
+- the **Province**, **PROVED** and **Sub-PROVED** filters limit the list to an area; the levels of your own region are fixed.
 
-- Updating or adding a profile photo.
-- Changing the email address.
-- Modifying your name and password.
+## Confirmations and messages
 
-System-related options include:
+Actions that delete or publish ask for a confirmation. Success messages show for a few seconds at the top right; errors show in a dialog with their explanation.
 
-- Switching the application's language.
-- Managing regions and other user accounts.*
+## Settings
 
-\*_Note: User management features are only accessible to users with higher permission levels._
+The **Users and regions** screen has four tabs:
 
-![Settings](/img/admin_getting_started/admin-settings.png)
-
-## Divisions of the Sidebar
-
-The Admin Panel is structured into three main areas:
-
-- **Dashboard:** The primary interface of the application, displaying performance data and analytics for a selected region over a user-defined time period.
-- **Questionnaire:** This section offers access to information and tools related to the questionnaire used in the Classroom Observation process by Coaches.
-- **Data:** Comprising sections that present raw data in tabular form, this area allows for filtering, exporting, and in-depth examination of data.
+- **General**: your name and e-mail address;
+- **Users** (administrators): add, edit and delete the accounts, with their role and region;
+- **Provinces** (administrators): the Province, PROVED, Sub-PROVED hierarchy and its import;
+- **Journal** (administrators): the actions made in the administration.
