@@ -4,32 +4,28 @@ sidebar_position: 0
 
 # Dashboard
 
-The Dashboard provides an overview of regional data over a specified time frame.
+The dashboard shows the activity of the observers and the results of the observations of an area over a period.
 
 ## Filters
 
-To tailor the data, the Dashboard includes filters for selecting specific regions, districts, and municipalities. Additionally, users can define the time period for which they wish to retrieve data.
+- **Province, PROVED, Sub-PROVED**: the area shown; the sub-regions of the chosen area make the "By area" table.
+- **Period**: all time, last 30 or 90 days, current school year (since 1 September) or previous school year.
 
-![Dashboard filters](/img/admin_getting_started/admin-dashboard-filters.png)
+## Indicators
 
-## Data Sections
+| Indicator | Content |
+| --- | --- |
+| Closed sessions | Number of finished sessions, and sessions still in progress |
+| Teachers observed | Distinct teachers observed and number of schools |
+| Active observers | Observers with at least one session, and learning circles with their participants |
+| Average of the global scores | Average of the 1 to 5 scores of the sub-domains, and validated PDPs |
 
-The Dashboard allows viewing data on Engagement, Targeted Improvement Areas, and Specific Data for each Teaching Practice.
+## Charts and tables
 
-### Engagement
-
-This section offers insights into the activities of coaches and teachers in the selected region for the specified time period.
-
-![Engagement section](/img/admin_getting_started/admin-dashboard-engagement.png)
-
-### Targeted Improvement Areas
-
-This area focuses on the Teaching Practices identified for enhancement with teachers. It highlights the practices where teachers most commonly struggle and need improvement.
-
-![Targeted improvement areas](/img/admin_getting_started/admin-dashbord-targeted.png)
-
-### Specific Data for Each Teaching Practice
-
-Located below the Targeted Improvement Areas graph, this feature allows users to select a Teaching Practice to examine in more detail. It provides a granular view of teacher performance in the chosen region and time interval for each specific Teaching Practice.
-
-![Targeted improvement areas](/img/admin_getting_started/admin-dashboard-specific.png)
+- **Sessions per month**: the last 12 months of the period.
+- **Appreciations**: the appreciation kept by the observer (Very good to Weak).
+- **Global scores by sub-domain**: share of the scores 1 to 5 for each sub-domain, with the average and the number of scored sessions.
+- **By function of the observer**: sessions, observers, teachers and average for the inspectors, pedagogical advisors, school heads and peers.
+- **By area**: the same figures for each sub-region.
+- **Behaviours most worked on**: the behaviours of the grid that come back most in the objectives of the PDPs.
+- **Documents shown**: for each document of the checklist, the share of the sessions where it was shown.

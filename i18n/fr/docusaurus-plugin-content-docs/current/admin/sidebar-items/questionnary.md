@@ -1,31 +1,39 @@
 ---
-sidebar_position: 1
+sidebar_position: 2
 ---
 
-# Grille
+# Référentiel
 
-La rubrique Grille regroupe la page des **sous-domaines** et celle des **séances d'observation**.
+Le référentiel est commun à tous les appareils. Les appareils reçoivent chaque modification à leur prochaine synchronisation. Seuls les administrateurs peuvent le modifier.
 
-## Sous-domaines
+## Grille d'observation
 
-Cette page liste les six sous-domaines de la grille d'observation RDC, dans l'ordre de l'outil papier, avec le nombre de comportements de chacun (30 au total).
+La grille reprend l'outil d'observation des pratiques de classe : domaines, sous-domaines (avec ou sans cote globale) et 30 comportements, chacun avec son type de réponse (Oui/Non ou Faible/Moyen/Élevé) et l'éventuelle réponse N/A.
 
-On peut :
+Les codes et la structure de la grille sont fixés. Le bouton ✎ d'un comportement permet de corriger :
 
-- télécharger la liste ;
-- voir les comportements d'un sous-domaine ;
-- modifier un sous-domaine et ses comportements ;
-- activer ou désactiver un sous-domaine ;
-- ajouter un sous-domaine.
+- son **libellé** ;
+- son **aide contextuelle** : le repère affiché dans l'application pour chaque réponse (par exemple ce qui distingue « Faible » de « Moyen »).
 
-La grille RDC est chargée à l'installation de la plateforme. Modifiez-la avec prudence : les observations déjà réalisées restent liées aux comportements qu'elles ont cotés.
+## Checklist documentaire
 
-:::warning Connexion nécessaire
-Les modifications de la grille parviennent aux appareils des observateurs à leur prochaine synchronisation.
-:::
+La liste des 15 documents de l'enseignant.e et des apprenant.e.s vérifiés pendant l'observation. Le bouton ✎ permet de corriger le nom du document et son énoncé.
 
-## Séances d'observation
+## Règles du PDP
 
-Cette page liste les séances réalisées, avec l'établissement, l'observateur, l'enseignant, la discipline et l'indication de l'entretien. Le bouton « Télécharger les données » exporte le tableau.
+Les règles décident des objectifs que l'application propose dans le plan de développement professionnel, sans connexion, à partir des réponses de la grille.
 
-Le menu de chaque ligne permet d'ouvrir la séance : établissement, observateur, enseignant, réponses données à chaque comportement et notes de l'entretien.
+Une version comprend :
+
+- **le diagnostic** : la catégorie donnée à chaque réponse (point fort, à consolider ou prioritaire) ;
+- **le seuil de priorité** : quand la cote globale d'un sous-domaine est égale ou inférieure au seuil, ses comportements à consolider deviennent prioritaires ;
+- **le nombre maximum d'objectifs** et **l'échéance** en jours ;
+- **la bibliothèque** : pour chaque comportement, l'objectif, les actions (une par ligne) et l'indicateur proposés.
+
+Une seule version est publiée à la fois. Pour changer les règles :
+
+1. Choisissez **Préparer une nouvelle version** : un brouillon est créé à partir de la version publiée.
+2. Modifiez le diagnostic, les paramètres et la bibliothèque. La barre du bas indique s'il reste des modifications non enregistrées ; choisissez **Enregistrer le brouillon**.
+3. Choisissez **Publier** et confirmez. La version publiée devient archivée ; les appareils appliquent la nouvelle après leur prochaine synchronisation.
+
+Les PDP déjà établis gardent la version avec laquelle ils ont été faits. Un brouillon peut être supprimé tant qu'il n'est pas publié ; la version publiée ne change pas.

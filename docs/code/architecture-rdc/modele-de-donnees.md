@@ -379,6 +379,23 @@ La synchronisation existante fonctionne par établissement : l'appareil envoie l
 
 Les règles du PDP s'exécutent sur l'appareil : le projet de PDP peut être établi pendant l'entretien avec l'enseignant, même sans connexion. L'application signale une absence prolongée de synchronisation, qui signifierait que les règles utilisées ne sont peut-être plus les dernières publiées.
 
+## Administration
+
+L'interface web lit et modifie ces données par les points d'accès suivants, décrits dans Swagger (`/api/docs`). Tous sont limités à la région de l'utilisateur et à ses sous-régions ; les modifications du référentiel sont réservées au rôle `admin`.
+
+| Point d'accès | Rôle |
+| --- | --- |
+| `GET /api/dashboard/rdc` | Tableau de bord (B26) : totaux, par fonction de l'observateur, par zone, cotes par sous-domaine, appréciations, mois, comportements des PDP, checklist, cercles |
+| `GET /api/session` | Liste des séances avec la moyenne des cotes globales et l'état du PDP |
+| `GET /api/session/:id/details` | Séance complète : en-tête, activités, réponses, cotes, checklist, notes, signatures (SVG) et PDP |
+| `GET /api/session/export` | Résultats de toutes les séances, pour les fichiers Excel |
+| `GET`, `PUT /api/checklist-items` | Checklist documentaire (B12) |
+| `GET`, `POST`, `PUT`, `DELETE /api/pdp/rule-sets`, `POST /api/pdp/rule-sets/:id/publish` | Versions des règles du PDP : brouillon, modification, publication, suppression (B19) |
+| `GET /api/tlc-evaluations` | Cercles d'apprentissage (B22) |
+| `GET`, `PUT /api/coach` | Observateurs avec leurs établissements, leur activité et leur profil (B21) |
+
+Les fiches d'observation et les PDP sont imprimés depuis le navigateur avec la même mise en page que les PDF de l'application, sans service PDF côté serveur. Chaque synchronisation est datée par le serveur, ce qui permet à l'administration de signaler les appareils qui ne se sont pas synchronisés depuis 7 jours.
+
 ## Migrations
 
 - **Serveur** : une migration TypeORM ajoute les colonnes et crée les tables ; elle est exécutée par `npm run migration:run`.

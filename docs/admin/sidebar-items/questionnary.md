@@ -1,106 +1,39 @@
 ---
-sidebar_position: 1
+sidebar_position: 2
 ---
 
-# Questionnaire
+# Reference
 
-The Questionnaire section offers tools and information related to Teaching Practices questions, divided into **Teaching Practices** and **Coaching Sessions** pages.
+The reference is shared by every device. The devices receive each change at their next synchronisation. Only the administrators can change it.
 
-## Teaching Practices
+## Observation grid
 
-This page provides tools for managing Teaching Practices and their associated questions, used by Coaches during the Class Observation process.
+The grid follows the classroom observation tool: domains, sub-domains (with or without a global score) and 30 behaviours, each with its type of answer (Yes/No or Low/Medium/High) and the possible N/A answer.
 
-Features available on this page include:
+The codes and the structure of the grid are fixed. The ✎ button of a behaviour corrects:
 
-- Adding new Teaching Practices.
-- Downloading data from the page.
-- Viewing questions under each Teaching Practice.
-- Editing existing Teaching Practices.
-- Activating or deactivating a Teaching Practice.
+- its **wording**;
+- its **contextual help**: the guidance shown in the application for each answer (for example what tells "Low" from "Medium").
 
-![Teaching Practices page](/img/admin_getting_started/teaching-practices-page.png)
+## Document checklist
 
-### Downloading Data
+The 15 documents of the teacher and of the learners checked during the observation. The ✎ button corrects the name of the document and its statement.
 
-To download data from the page, click the "Download data" button at the top right of the screen.
+## PDP rules
 
-![Teaching Practices page's button](/img/admin_getting_started/teaching-practices-buttons.png)
+The rules decide which objectives the application suggests in the professional development plan, offline, from the answers of the grid.
 
-### Adding New Teaching Practices
+A version holds:
 
-To add a new Teaching Practice, click the "Add new teaching practice" button at the top right. This opens a form to input the practice's name, a question, and a description.
+- **the diagnostic**: the category given to each answer (strength, to consolidate or priority);
+- **the priority threshold**: when the global score of a sub-domain is at or below the threshold, its behaviours to consolidate become priorities;
+- **the maximum number of objectives** and **the due date** in days;
+- **the library**: for each behaviour, the suggested objective, actions (one per line) and indicator.
 
-![New Teaching Practice](/img/admin_getting_started/teaching-practices-new-tp.png)
+Only one version is published at a time. To change the rules:
 
-After saving the first question, you can:
+1. Choose **Prepare a new version**: a draft is made from the published version.
+2. Change the diagnostic, the settings and the library. The bottom bar shows when changes are not saved; choose **Save the draft**.
+3. Choose **Publish** and confirm. The published version becomes archived; the devices apply the new one after their next synchronisation.
 
-- Edit the created question.
-- Delete the created question.
-- Add additional questions.
-
-![Adding questions](/img/admin_getting_started/teaching-practices-add-question.png)
-
-Click "Save" to finalize the new Teaching Practice.
-
-### Managing Teaching Practices
-
-The three-dot-button beside each Teaching Practice opens a menu with available actions.
-
-![Teaching Practices' actions](/img/admin_getting_started/teaching-practices-actions.png)
-
-Actions include:
-
-#### View
-
-Displays the questions associated with the selected Teaching Practice.
-
-![Teaching Practices' actions](/img/admin_getting_started/teaching-practices-view.png)
-
-#### Edit
-
-Allows editing of the Teaching Practice's name and questions.
-
-![Teaching Practices' actions](/img/admin_getting_started/teaching-practices-edit.png)
-
-#### Activate/Deactivate
-
-This feature toggles the visibility of the Teaching Practice in the coaches' app.
-
-![Teaching Practices' actions](/img/admin_getting_started/teaching-practices-inactive.png)
-
-:::warning Connection Required
-Coaches must be online to sync these modifications.
-:::
-
-## Coaching Sessions
-
-This page displays a table detailing each Teaching Practice session, including:
-
-- School name.
-- Coach's name.
-- Teacher's name.
-- Subject of the class.
-- Whether feedback was given.
-
-![Coaching sessions page](/img/admin_getting_started/coaching-sessions-page.png)
-
-### Downloading Data
-
-To download the data, click the "Download data" button at the top right of the screen.
-
-![Teaching Practices page's button](/img/admin_getting_started/coaching-sessions-button.png)
-
-### Viewing Coaching Sessions
-
-Clicking the three-dot-button in each row opens a menu with options for that coaching session.
-
-![Coaching sessions' actions](/img/admin_getting_started/coaching-sessions-actions.png)
-
-Selecting "View" opens a drawer with details of the session, such as:
-
-- School's name.
-- Coach's name.
-- Teacher's name.
-- Responses to Teaching Practice questions.
-
-![Coaching session details](/img/admin_getting_started/coaching-sessions-details.png)
+The PDPs already made keep the version they were made with. A draft can be deleted as long as it is not published; the published version does not change.
